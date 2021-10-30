@@ -8,23 +8,26 @@ function deleteNth(arr, n) {
   //   const timesArr = Object.values(emptyArr);
 
   let newArr = [];
-  let count = new Array(arr.length).fill(0);
+  let count = {};
   console.log(count);
   for (i = 0; i < arr.length; i++) {
     if (newArr.includes(arr[i])) {
-      if (count[i] < n) {
-        count[i]++;
+      if (count[arr[i]] < n) {
+        count[arr[i]]++;
         newArr.push(arr[i]);
+        console.log(count);
       } else continue;
     } else {
       newArr.push(arr[i]);
-      count[i]++;
+      count[arr[i]] = (count[arr[i]] || 0) + 1;
+      console.log(newArr);
+      console.log(count);
     }
   }
   console.log(newArr);
 }
 
-deleteNth([20, 37, 20, 21, 37, 50, 21, 25, 21, 20], 2);
+deleteNth([20, 37, 20, 21, 37, 50, 21, 25, 21, 20], 3);
 deleteNth([1, 1, 1, 1], 2);
 
 // function countEl(arr) {
@@ -32,5 +35,8 @@ deleteNth([1, 1, 1, 1], 2);
 //   arr.forEach(function (el) {
 //     emptyArr[el] = (emptyArr[el] || 0) + 1;
 //   });
+//   console.log(emptyArr);
 //   const timesArr = Object.values(emptyArr);
 // }
+
+// countEl([20, 37, 20, 21, 37, 50, 21, 25, 21, 20]);
