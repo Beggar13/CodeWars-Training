@@ -75,32 +75,76 @@ countSheeps(sheeps);
 // console.log(digits);
 //c)Identify when number is single digit and stop it. If number <10
 
-const persistence = function (num) {
-  //making numbers into array digits function
-  const digitsToArray = function (number) {
+//making numbers into array digits function
+const digitsToArray = function (number) {
+  let test;
+  let count = 0;
+  while (number > 9) {
+    count++;
     const numberDigits = [];
     while (number > 0) {
       numberDigits.push(number % 10);
       number = Math.trunc(number / 10);
     }
-    numberDigits.reverse();
-    return numberDigits;
-  };
-  // calling function for the first number
-  const numArray = digitsToArray(num);
-  console.log(numArray);
-  //function for multiplying array digits between them
-  const multFunction = function (arr) {
-    const multResult = numArray.reduce(function (acc, cur) {
+    test = numberDigits.reverse().map((n) => (n === 0 ? (n = 1) : n));
+    const multiDigits = test.reduce(function (acc, cur) {
       return acc * cur;
     }, 1);
-    console.log(multResult);
-  };
-  multFunction(numArray);
-  digitsToArray;
+    //make the multiplication to be the new number
+    number = multiDigits;
+  }
+  console.log(count);
 };
 
-persistence(258);
+digitsToArray(258);
+digitsToArray(39);
+digitsToArray(999);
+digitsToArray(4);
+digitsToArray(55555);
+digitsToArray(4);
+digitsToArray(4);
+
+// const persistence = function (num) {
+//   let count = 0;g
+//   while (num > 9) {
+//     digitsToArray(num);
+//     count++;
+//   }
+//   console.log(num);
+//   console.log(count);
+// };
+
+// persistence(258);
+
+/////// First attempt to build it
+
+// const persistence = function (num) {
+//   //making numbers into array digits function
+//   const digitsToArray = function (number) {
+//     const numberDigits = [];
+//     while (number > 0) {
+//       numberDigits.push(number % 10);
+//       number = Math.trunc(number / 10);
+//     }
+//     numberDigits.reverse();
+//     return numberDigits;
+//   };
+//   // calling function for the first number
+//   const numArray = digitsToArray(num);
+//   console.log(numArray);
+//   //function for multiplying array digits between them
+//   const multFunction = function (arr) {
+//     const multResult = numArray.reduce(function (acc, cur) {
+//       return acc * cur;
+//     }, 1);
+//     console.log(multResult);
+//   };
+//   multFunction(numArray);
+//   digitsToArray;
+// };
+
+// persistence(258);
+
 // if (mul < 10) {
 //   return count, mul;
 // } else {
