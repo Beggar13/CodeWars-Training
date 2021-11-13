@@ -78,26 +78,26 @@ countSheeps(sheeps);
 const persistence = function (num) {
   //making numbers into array digits function
   const digitsToArray = function (number) {
-    numberDigits = [];
+    const numberDigits = [];
     while (number > 0) {
       numberDigits.push(number % 10);
       number = Math.trunc(number / 10);
     }
-    return (numberArray = numberDigits);
+    numberDigits.reverse();
+    return numberDigits;
   };
   // calling function for the first number
   const numArray = digitsToArray(num);
   console.log(numArray);
   //function for multiplying array digits between them
-  const multDigits = function (arr) {
-    let mul = 1;
-    let count = 0;
-    for (let i = 0; i < arr.length; i++) {
-      mul *= arr[i];
-      count++;
-    }
+  const multFunction = function (arr) {
+    const multResult = numArray.reduce(function (acc, cur) {
+      return acc * cur;
+    }, 1);
+    console.log(multResult);
   };
-  console.log(multDigits(numArray));
+  multFunction(numArray);
+  digitsToArray;
 };
 
 persistence(258);
@@ -105,3 +105,19 @@ persistence(258);
 //   return count, mul;
 // } else {
 // }
+
+//first attempt before learning Reduce Method
+// console.log(numArray);
+//   //function for multiplying array digits between them
+//   const multDigits = function (arr) {
+//     let mul = 1;
+//     let count = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//       mul *= arr[i];
+//       count++;
+//     }
+//     console.log(mul);
+//     console.log(count);
+//     return mul;
+//   };
+//   console.log(multDigits(numArray));
