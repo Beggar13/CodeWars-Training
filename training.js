@@ -41,7 +41,7 @@ function countSheeps(arrayOfSheep) {
 
 countSheeps(sheeps);
 
-*/
+
 
 //CODEWARS Training 2
 // Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
@@ -165,3 +165,48 @@ digitsToArray(4);
 //     return mul;
 //   };
 //   console.log(multDigits(numArray));
+
+
+
+//////////////////
+
+function solution(str, ending) {
+  console.log(str.slice(-ending.length));
+  if (ending.length === 0) {
+    console.log(true);
+  } else if (str.slice(-ending.length) === ending) {
+    console.log(true);
+  } else console.log(false);
+}
+
+solution("abc", "bc");
+solution("abc", "d");
+solution("abc", "");
+
+*/
+
+///////////////////////////////
+// BIT COUNTING
+
+var countBits = function (n) {
+  //turn integer to binary representation
+  let binaryArr = [];
+  while (n > 0) {
+    binaryArr.push(n % 2);
+    n = Math.trunc(n / 2);
+  } //TODOthe last zero(whcih becomes first when reversing is missing)
+  //reverse array to give binary representation
+  binaryArr.reverse();
+  console.log(binaryArr);
+  //count ones
+  let count = 0;
+  binaryArr.forEach((x) => (x === 1 ? count++ : count));
+  console.log(count);
+};
+
+countBits(0);
+countBits(4);
+countBits(7);
+countBits(9);
+countBits(10);
+countBits(13350);
