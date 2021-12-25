@@ -183,7 +183,7 @@ solution("abc", "bc");
 solution("abc", "d");
 solution("abc", "");
 
-*/
+
 
 ///////////////////////////////
 // BIT COUNTING
@@ -210,3 +210,29 @@ countBits(7);
 countBits(9);
 countBits(10);
 countBits(13350);
+
+*/
+
+//////////////////////////////////////////
+//Persistend bugger debug
+
+function persistence(num) {
+  let test;
+  let count = 0;
+  while (num > 9) {
+    count++;
+    const numberDigits = [];
+    while (num > 0) {
+      numberDigits.push(num % 10);
+      num = Math.trunc(num / 10);
+    }
+    test = numberDigits.reverse().map((n) => (n === 0 ? (n = 1) : n)); //finally this was the error. the actual persistence takes into conisderation the multiplication with 0. you don't need to avoid it
+    const multiDigits = test.reduce(function (acc, cur) {
+      return acc * cur;
+    }, 1);
+    num = multiDigits;
+  }
+  console.log(count);
+}
+
+persistence(6541314);
